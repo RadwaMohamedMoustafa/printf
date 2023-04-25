@@ -6,8 +6,7 @@
  * null byte used to end output to strings
  */
 int _printf(const char *format, ...)
-{
-	int i, k, counter = 0;
+{	int i, k, counter = 0;
 	va_list(m);
 	if (format == NULL)
 	return (-1);
