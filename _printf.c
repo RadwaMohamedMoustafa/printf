@@ -6,41 +6,24 @@
  * null byte used to end output to strings
  */
 int _printf(const char *format, ...)
-{	int i, k, counter = 0;
-	va_list(m);
-	if (format == NULL)
+{	int i, k, c = 0;
+	va_list args;
+	if (!format)
 	return (-1);
-	va_start(m, format);
+	va_start(args, format);
 	for (i = 0; format[i]; i++)
-	{
-	if (format[i] == '%')
-	{i++;
+	if (format[i] == '%' && ++i)
 	if (format[i] == 'c')
-	{char c = va_arg(m, int);
-	_putchar(c);
-	counter++;
-	}
+	c += _putchar(va_arg(args, int));
 	else if (format[i] == 's')
-	{char *s = va_arg(m, char*);
-	for (k = 0; s[k]; k++)
-	{_putchar(s[k]);
-	}
-	counter = counter + k;
-	}
+	for (k = 0; va_arg(args, char *)[k]; k++)
+	c += _putchar(va_arg(args, char *)[k]);
 	else if (format[i] == '%')
-	{
-	_putchar('%');
-	counter++;
-	}
+	c += _putchar('%');
 	else
-	{_putchar('%');
-	_putchar(format[i]);
-	counter += 2;
-	}}
+	c += _putchar('%') + _putchar(format[i]), c++;
 	else
-	{_putchar(format[i]);
-	counter++;
-	}}
-	va_end(m);
-	return (counter);
+	c += _putchar(format[i]);
+	va_end(args);
+	return (c);
 }
