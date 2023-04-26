@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 	int i, k, counter = 0;
-	char c, *s;
+	char *s;
 	va_list m;
 
 	va_start(m, format);
@@ -18,11 +18,11 @@ int _printf(const char *format, ...)
 	{
 	if (format[i] == '%')
 	{
-	i++;
+	if (format[++i] == NULL)
+		break;
 	if (format[i] == 'c')
 	{
-	c = va_arg(m, int);
-	counter += _putchar(c);
+	counter += _putchar(va_arg(m, int));
 	}
 	else if (format[i] == 's')
 	{
@@ -43,5 +43,5 @@ int _printf(const char *format, ...)
 	counter += _putchar(format[i]);
 	}
 	va_end(m);
-	return (counter);
+	return (counter == 0 ? -1 : counter);
 }
