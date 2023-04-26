@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 	{
 	if (format[i] == '%')
 	{
-	if (format[++i] == NULL)
+	if (!format[++i])
 		break;
 	if (format[i] == 'c')
 	{
