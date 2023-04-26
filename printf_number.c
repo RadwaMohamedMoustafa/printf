@@ -18,7 +18,7 @@ n1 = n;
 }
 if (n1 / 10)
 {
-print_number(n1 / 10);
+print_number(n1 / 10, counter);
 }
 _putchar((n1 % 10) + '0');
 (*counter)++;
