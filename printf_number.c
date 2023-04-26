@@ -2,6 +2,7 @@
 /**
 * print_number - prints an integer
 * @n: integer to be printed
+* @counter: pointer
 */
 void print_number(int n, int *counter)
 {
