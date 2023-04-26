@@ -43,8 +43,8 @@ int _printf(const char *format, ...)
 	counter += print_str(va_arg(m, char*));
 	else if (format[i] == '%')
 	counter += _putchar('%');
-	/*else if (format[i] == 'd' || format[i] == 'i')
-	print_number(va_arg(m, int), &counter);*/
+	else if (format[i] == 'd' || format[i] == 'i')
+	print_number(va_arg(m, int), &counter);
 	else
 	{
 	counter += _putchar('%');
