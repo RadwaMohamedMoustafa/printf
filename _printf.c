@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 	}
 	else if (format[i] == 's')
 	{
-	s = va_arg(m, char*);
+	s = va_arg(m, char*) ? va_arg(m, char*) : "(null)";
 	for (k = 0; s[k]; k++)
 	_putchar(s[k]);
 	counter += k;
