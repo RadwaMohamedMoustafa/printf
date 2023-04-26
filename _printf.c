@@ -6,8 +6,7 @@
  * null byte used to end output to strings
  */
 int _printf(const char *format, ...)
-{
-	int i, k, counter = 0;
+{	int i, k, counter = 0;
 	char *s;
 	va_list m;
 
@@ -26,7 +25,8 @@ int _printf(const char *format, ...)
 	}
 	else if (format[i] == 's')
 	{
-	s = va_arg(m, char*) ? va_arg(m, char*) : "(null)";
+	s = va_arg(m, char*);
+	s = s ? s : "(null)";
 	for (k = 0; s[k]; k++)
 	_putchar(s[k]);
 	counter += k;
