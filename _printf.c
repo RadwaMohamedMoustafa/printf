@@ -1,13 +1,28 @@
 #include "main.h"
 /**
+ * print_str - print str
+ * @s: string pointer
+ * Return: length of string printed
+*/
+int print_str(char *s)
+{
+	int k;
+	char *ptr = s;
+
+	if (ptr == NULL)
+	ptr = "(null)";
+	for (k = 0; ptr[k]; k++)
+	_putchar(ptr[k]);
+	return (k);
+}
+/**
  * _printf - produces output according to a format
  * @format: string to print to stdout
  * Return: the number of characters printed excluding the
  * null byte used to end output to strings
  */
 int _printf(const char *format, ...)
-{	int i, k, counter = 0;
-	char *s;
+{	int i, counter = 0;
 	va_list m;
 
 	va_start(m, format);
@@ -24,13 +39,7 @@ int _printf(const char *format, ...)
 	counter += _putchar(va_arg(m, int));
 	}
 	else if (format[i] == 's')
-	{
-	s = va_arg(m, char*);
-	s = s ? s : "(null)";
-	for (k = 0; s[k]; k++)
-	_putchar(s[k]);
-	counter += k;
-	}
+	counter += print_str(va_arg(m, char*));
 	else if (format[i] == '%')
 	counter += _putchar('%');
 	else
